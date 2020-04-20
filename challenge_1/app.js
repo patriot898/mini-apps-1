@@ -180,9 +180,6 @@ const updateScoreboard = (player) => {
 //
 
 const onGameTileClick = (tileRow, tileColumn, player) => {
-  console.log('Clicked!');
-  console.log(state.gameBoard);
-  console.log(tileRow, tileColumn, player);
   if (state.gameBoard[tileRow][tileColumn] === null) {
     togglePosition(tileRow, tileColumn, player);
     displayMove(tileRow, tileColumn, player);

@@ -1,0 +1,23 @@
+.column0 {
+  width:33%;
+  height:100px;
+  border: 1px solid black;
+  float:left;
+
+}
+
+.column1 {
+  width:33%;
+  height:100px;
+  border: 1px solid black;
+  float:left;
+
+}
+
+.column2 {
+  width:33%;
+  height:100px;
+  border: 1px solid black;
+  float:left;
+
+}
