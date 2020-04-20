@@ -28,10 +28,8 @@ const togglePosition = (rowIndex, columnIndex, player) => {
   console.log(state.moveCount[player]);
   checkGameboardWin(player);
   if(player === 'X') {
-    //state.moveCount.X ++;
     state.currentPlayer = 'O';
   } else {
-    //state.moveCount.O ++;
     state.currentPlayer = 'X';
   }
 }
@@ -96,6 +94,7 @@ const checkGameboardWin = (player) => {
     if (checkRowWin(rowIndex, player)) {
       alert('Player ' + player + 'won in row: ' + rowIndex + '!!');
       //display winner
+      state.winCount[player] ++
       return;
     }
   }
@@ -103,22 +102,30 @@ const checkGameboardWin = (player) => {
   for (let columnIndex = 0; columnIndex < state.gameBoard[0].length; columnIndex++) {
     if (checkColumnWin(columnIndex, player)) {
       alert('Player ' + player + ' won in column: ' + columnIndex + '!!');
+      state.winCount[player] ++
+      updateScoreboard(player);
       return;
     }
   }
 
   if (checkDiagonalWin(0, player)) {
     alert('Player ' + player + ' won in the diagonal at column: 0!!');
+    state.winCount[player] ++
+    updateScoreboard(player);
     return;
   }
 
   if (checkDiagonalWin(2, player)) {
     alert('Player ' + player + ' won in the diagonal at column: 2!!');
+    state.winCount[player] ++;
+    updateScoreboard(player);
     return;
   }
 
   if (state.moveCount.O + state.moveCount.X === 9) {
     alert("Looks like it's a tie!");
+    state.winCount.ties ++
+    updateScoreboard('ties');
     return;
   }
 
@@ -153,6 +160,10 @@ const resetBoardView = () => {
       currentTile.innerText = '';
     }
   }
+}
+
+const updateScoreboard = (player) => {
+  document.getElementById('wins' + player).innerText = state.winCount[player];
 }
 
 
