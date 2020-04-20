@@ -4,49 +4,36 @@
     <body>
       <div id='gameboard' style='width:60%'>
         <div class='row0'>
-          <div class='column0' id='00' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(0, 0, currentPlayer)'>
-            <div class='X' style='display:none'>X</div>
-            <div class='O' style='display:none'>O</div>
+          <div class='column0' id='00' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(0, 0, state.currentPlayer)'>
           </div>
-          <div class='column1' id='01' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(0, 1, currentPlayer)'>
-            <div class='X' style='display:none'>X</div>
-            <div class='O' style='display:none'>O</div>
+          <div class='column1' id='01' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(0, 1, state.currentPlayer)'>
           </div>
-          <div class='column2' id='02' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(0, 2, currentPlayer)'>
-            <div class='X' style='display:none'>X</div>
-            <div class='O' style='display:none'>O</div>
+          <div class='column2' id='02' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(0, 2, state.currentPlayer)'>
           </div>
         </div>
         <div class='row1'>
-          <div class='column0' id='10' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(1, 0, currentPlayer)'>
-            <div class='X' style='display:none'>X</div>
-            <div class='O' style='display:none'>O</div>
+          <div class='column0' id='10' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(1, 0, state.currentPlayer)'>
           </div>
-          <div class='column1' id='11' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(1, 1, currentPlayer)'>
-            <div class='X' style='display:none'>X</div>
-            <div class='O' style='display:none'>O</div>
+          <div class='column1' id='11' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(1, 1, state.currentPlayer)'>
           </div>
-          <div class='column2' id='12' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(1, 2, currentPlayer)'>
-            <div class='X' style='display:none'>X</div>
-            <div class='O' style='display:none'>O</div>
+          <div class='column2' id='12' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(1, 2, state.currentPlayer)'>
           </div>
         </div>
         <div class='row2'>
-          <div class='column0' id='20' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(2, 0, currentPlayer)'>
-            <div class='X' style='display:none'>X</div>
-            <div class='O' style='display:none'>O</div>
+          <div class='column0' id='20' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(2, 0, state.currentPlayer)'>
           </div>
-          <div class='column1' id='21' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(2, 1, currentPlayer)'>
-            <div class='X' style='display:none'>X</div>
-            <div class='O' style='display:none'>O</div>
+          <div class='column1' id='21' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(2, 1, state.currentPlayer)'>
           </div>
-          <div class='column2' id='22' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(2, 2, currentPlayer)'>
-            <div class='X' style='display:none'>X</div>
-            <div class='O' style='display:none'>O</div>
+          <div class='column2' id='22' style='width:33%; border: 1px solid black; float:left; height:100px' onclick='onGameTileClick(2, 2, state.currentPlayer)'>
           </div>
         </div>
       </div>
-      <div class='reset' onclick='onResetClick()'>Reset</div>
+      <div class='reset' onclick='onResetClick()'>Reset Board</div>
+      <div class='scoreboard'> Scoreboard
+        <div class='winBox'>X Wins: <div id='xWins'>0</div></div>
+        <div class='winBox'>O Wins: <div id='xWins'>0</div></div>
+        <div class='winBox'>Ties: <div id='ties'>0</div></div>
+      </div>
     </body>
   </html>
 

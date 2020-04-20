@@ -4,32 +4,41 @@
 //checks to see if there is a winner after every move
 //determines what is considered a win
 
-let gameBoard = [[null, null, null],
+
+//state items
+let state = {};
+state.gameBoard = [[null, null, null],
 [null, null, null],
 [null, null, null]];
-
-let moveCountX = 0;
-let moveCountO = 0;
-
-let currentPlayer = 'X';
+state.moveCount = {};
+state.moveCount.X = 0;
+state.moveCount.O = 0;
+state.currentPlayer = 'X';
+state.winCount = {};
+state.winCount.X = 0;
+state.winCount.O = 0;
+state.winCount.ties = 0;
+state.gameStatus = 'inProgress';
 
 //PICK POSITION
 //on click, it changes the value of the selected board position from null to either X or O, depending on whose turn it is
 const togglePosition = (rowIndex, columnIndex, player) => {
-  gameBoard[rowIndex][columnIndex] = player;
+  state.gameBoard[rowIndex][columnIndex] = player;
+  state.moveCount[player] ++
+  console.log(state.moveCount[player]);
   checkGameboardWin(player);
   if(player === 'X') {
-    moveCountX ++;
-    currentPlayer = 'O';
+    //state.moveCount.X ++;
+    state.currentPlayer = 'O';
   } else {
-    moveCountO ++;
-    currentPlayer = 'X';
+    //state.moveCount.O ++;
+    state.currentPlayer = 'X';
   }
 }
 
 const checkRowWin = (rowIndex, player) => {
   let movesInRow = 0;
-  for (let column of gameBoard[rowIndex]) {
+  for (let column of state.gameBoard[rowIndex]) {
     if (column === player) {
       movesInRow ++;
     }
@@ -40,7 +49,7 @@ const checkRowWin = (rowIndex, player) => {
 
 const checkColumnWin = (columnIndex, player) => {
   let movesInColumn = 0;
-  for (let row of gameBoard) {
+  for (let row of state.gameBoard) {
     if (row[columnIndex] === player) {
       movesInColumn ++
     }
@@ -55,17 +64,17 @@ const checkDiagonalWin = (diagonalColumnIndex, player) => {
   let movesInDiagonal = 0;
   if (diagonalColumnIndex === 0) {
     //check gameboard[0][0], gameboard[1][1], and gameboard[2][2]
-    for (let i = 0; i < gameBoard.length; i++) {
-      if (gameBoard[i][i] === player) {
+    for (let i = 0; i < state.gameBoard.length; i++) {
+      if (state.gameBoard[i][i] === player) {
         movesInDiagonal++;
       }
     }
   }
   if (diagonalColumnIndex === 2) {
     //check gameboard[0][2], gameboard[1][1], and gameboard[2][0]
-    for (let rowIndex = 0; rowIndex < gameBoard.length; rowIndex++) {
-    let columnIndex = gameBoard.length - 1 - rowIndex;
-      if(gameBoard[rowIndex][columnIndex] === player) {
+    for (let rowIndex = 0; rowIndex < state.gameBoard.length; rowIndex++) {
+    let columnIndex = state.gameBoard.length - 1 - rowIndex;
+      if(state.gameBoard[rowIndex][columnIndex] === player) {
         movesInDiagonal++;
       }
     }
@@ -77,7 +86,13 @@ const checkDiagonalWin = (diagonalColumnIndex, player) => {
 }
 
 const checkGameboardWin = (player) => {
-  for (let rowIndex = 0; rowIndex < gameBoard.length; rowIndex++) {
+
+  //checks for any row wins
+  //checks for any column wins
+  //checks for any diagonal wins
+  //if win, calls on winning message of current player to be displayed
+  //if after checking wins and seeing there are 9 moves total with no winner, declare tie
+  for (let rowIndex = 0; rowIndex < state.gameBoard.length; rowIndex++) {
     if (checkRowWin(rowIndex, player)) {
       alert('Player ' + player + 'won in row: ' + rowIndex + '!!');
       //display winner
@@ -85,7 +100,7 @@ const checkGameboardWin = (player) => {
     }
   }
 
-  for (let columnIndex = 0; columnIndex < gameBoard[0].length; columnIndex++) {
+  for (let columnIndex = 0; columnIndex < state.gameBoard[0].length; columnIndex++) {
     if (checkColumnWin(columnIndex, player)) {
       alert('Player ' + player + ' won in column: ' + columnIndex + '!!');
       return;
@@ -102,35 +117,22 @@ const checkGameboardWin = (player) => {
     return;
   }
 
-  if (moveCountO + moveCountX === 9) {
+  if (state.moveCount.O + state.moveCount.X === 9) {
     alert("Looks like it's a tie!");
     return;
   }
 
-
-
-  //alert('No winner yet...');
-  //return;
-
-
-
-
-  //checks for any row wins
-  //checks for any column wins
-  //checks for any diagonal wins
-  //if win, calls on winning message of current player to be displayed
-  //if after checking wins and seeing there are 9 moves total
 }
 
 const resetBoard = () => {
-  for(let row of gameBoard) {
+  for(let row of state.gameBoard) {
     for(let j = 0; j < row.length; j++) {
       row[j] = null;
     }
   }
-  moveCountX = 0;
-  moveCountO = 0;
-  currentPlayer = 'X';
+  state.moveCount.X = 0;
+  state.moveCount.O = 0;
+  state.currentPlayer = 'X';
 }
 
 
@@ -139,16 +141,16 @@ const resetBoard = () => {
 const displayMove = (tileRow, tileColumn, player) => {
     let currentTileId = (tileRow.toString() + tileColumn.toString());
     let currentTileElement = document.getElementById(currentTileId);
-    let moveToShow = currentTileElement.getElementsByClassName(player)[0];
-    moveToShow.style.display = 'block';
+    currentTileElement.innerText = player;
+    //let moveToShow = currentTileElement.getElementsByClassName(player)[0];
+    //moveToShow.style.display = 'block';
 }
 
 const resetBoardView = () => {
-  for (let i = 0; i < gameBoard.length; i++) {
-    for (let j = 0; j < gameBoard[i].length; j++) {
+  for (let i = 0; i < state.gameBoard.length; i++) {
+    for (let j = 0; j < state.gameBoard[i].length; j++) {
       let currentTile = document.getElementById(i.toString() + j.toString());
-      currentTile.getElementsByClassName('X')[0].style.display = 'none';
-      currentTile.getElementsByClassName('O')[0].style.display = 'none';
+      currentTile.innerText = '';
     }
   }
 }
@@ -168,9 +170,9 @@ const resetBoardView = () => {
 
 const onGameTileClick = (tileRow, tileColumn, player) => {
   console.log('Clicked!');
-  console.log(gameBoard);
+  console.log(state.gameBoard);
   console.log(tileRow, tileColumn, player);
-  if (gameBoard[tileRow][tileColumn] === null) {
+  if (state.gameBoard[tileRow][tileColumn] === null) {
     togglePosition(tileRow, tileColumn, player);
     displayMove(tileRow, tileColumn, player);
   } else {
