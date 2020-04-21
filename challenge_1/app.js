@@ -166,6 +166,10 @@ const updateScoreboard = (player) => {
   document.getElementById('wins' + player).innerText = state.winCount[player];
 }
 
+const updateTurnDisplay = () => {
+
+}
+
 
 
 //each portion of the gameboard - displays an X or O

@@ -1,23 +1,82 @@
-.column0 {
-  width:33%;
-  height:100px;
-  border: 1px solid black;
+#scoreboard {
   float:left;
+}
 
+#gameboard {
+  width: 60%;
+  margin: auto;
+}
+
+.row0 {
+  clear: both;
+  height:100px;
+}
+
+.row1 {
+  clear: both;
+  height:100px;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px 0px 2px 0px;
+}
+
+.row2 {
+  clear: both;
+  height: 100px;
+}
+
+
+.column0 {
+  width: 33%;
+  height: 100%;
+  float: left;
 }
 
 .column1 {
   width:33%;
-  height:100px;
-  border: 1px solid black;
-  float:left;
-
+  height: 100%;
+  border-style: solid;
+  border-color: black;
+  border-width: 0px 2px 0px 2px;
+  float: left;
 }
 
 .column2 {
-  width:33%;
-  height:100px;
-  border: 1px solid black;
-  float:left;
+  width: 33%;
+  height: 100%;
+  float: left;
+  clear: right;
+}
 
+.gameTile {
+  font-size: 30px;
+  margin: auto;
+  text-align: center;
+  line-height: 100px;
+}
+
+.gameTile:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.reset {
+  border: thin solid black;
+  border-radius: 3px;
+  width: max-content;
+  padding: 0px 5px;
+  clear: both;
+}
+
+.reset:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+
+.winBox {
+  width: 100px;
+}
+
+.winCount {
+  float: right;
 }

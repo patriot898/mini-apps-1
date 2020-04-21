@@ -6,38 +6,56 @@
 
   <html>
     <body>
+      <div id='scoreboard'> Scoreboard
+        <div class='winBox'>X Wins:
+          <div class='winCount' id='winsX'>0</div>
+        </div>
+        <div class='winBox'>O Wins:
+          <div class='winCount' id='winsO'>0</div>
+        </div>
+        <div class='winBox'>Ties:
+          <div class='winCount' id='winsties'>0</div>
+        </div>
+      </div>
+
       <div id='gameboard' style='width:60%'>
         <div class='row0'>
-          <div class='column0' id='00' onclick='onGameTileClick(0, 0, state.currentPlayer)'>
+          <div class='column0' onclick='onGameTileClick(0, 0, state.currentPlayer)'>
+            <div class='gameTile' id ='00'>&nbsp;</div>
           </div>
-          <div class='column1' id='01' onclick='onGameTileClick(0, 1, state.currentPlayer)'>
+          <div class='column1' onclick='onGameTileClick(0, 1, state.currentPlayer)'>
+            <div class='gameTile' id ='01'>&nbsp;</div>
           </div>
-          <div class='column2' id='02' onclick='onGameTileClick(0, 2, state.currentPlayer)'>
+          <div class='column2' onclick='onGameTileClick(0, 2, state.currentPlayer)'>
+            <div class='gameTile' id ='02'>&nbsp;</div>
           </div>
         </div>
         <div class='row1'>
-          <div class='column0' id='10' onclick='onGameTileClick(1, 0, state.currentPlayer)'>
+          <div class='column0' onclick='onGameTileClick(1, 0, state.currentPlayer)'>
+            <div class='gameTile' id ='10'>&nbsp;</div>
           </div>
-          <div class='column1' id='11' onclick='onGameTileClick(1, 1, state.currentPlayer)'>
+          <div class='column1' onclick='onGameTileClick(1, 1, state.currentPlayer)'>
+            <div class='gameTile' id ='11'>&nbsp;</div>
           </div>
-          <div class='column2' id='12' onclick='onGameTileClick(1, 2, state.currentPlayer)'>
+          <div class='column2' onclick='onGameTileClick(1, 2, state.currentPlayer)'>
+            <div class='gameTile' id ='12'>&nbsp;</div>
           </div>
         </div>
         <div class='row2'>
-          <div class='column0' id='20' onclick='onGameTileClick(2, 0, state.currentPlayer)'>
+          <div class='column0' onclick='onGameTileClick(2, 0, state.currentPlayer)'>
+            <div class='gameTile' id ='20'>&nbsp;</div>
           </div>
-          <div class='column1' id='21' onclick='onGameTileClick(2, 1, state.currentPlayer)'>
+          <div class='column1' onclick='onGameTileClick(2, 1, state.currentPlayer)'>
+            <div class='gameTile' id ='21'>&nbsp;</div>
           </div>
-          <div class='column2' id='22' onclick='onGameTileClick(2, 2, state.currentPlayer)'>
+          <div class='column2' onclick='onGameTileClick(2, 2, state.currentPlayer)'>
+            <div class='gameTile' id ='22'>&nbsp;</div>
           </div>
         </div>
       </div>
+
       <div class='reset' onclick='onResetClick()'>Reset Board</div>
-      <div class='scoreboard'> Scoreboard
-        <div class='winBox'>X Wins: <div id='winsX'>0</div></div>
-        <div class='winBox'>O Wins: <div id='winsO'>0</div></div>
-        <div class='winBox'>Ties: <div id='winsties'>0</div></div>
-      </div>
+
     </body>
   </html>
 
