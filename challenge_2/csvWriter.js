@@ -15,7 +15,7 @@ const csvWriter = {
     objArray.push(tempObj);
     if(object['children']) {
       for (let child of object['children']) {
-        objArray = objArray.concat(getChildObjects(child))
+        objArray = objArray.concat(csvWriter.getChildObjects(child))
       }
     }
 
