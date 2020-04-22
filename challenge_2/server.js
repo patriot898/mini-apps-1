@@ -17,12 +17,14 @@ server.use(bodyParser.urlencoded({extended: true}));
 
 
 server.get('/', (req, res) => {
+  console.log('Responding to get request!');
+  res.sendFile(path.join(__dirname + '/client/index.html'));
 
 });
 
 server.post('/', (req, res) => {
   //console.log('Received a request from ' + req.hostname + '. Here it is: ' + req.body);
-  //console.log(req.body.jsonFile);
+  console.log('Responding to post request!');
   let jsonFile = req.files.jsonFile;
   let filePath = __dirname + '/uploads/' + jsonFile.name;
   jsonFile.mv(path.join(filePath))
@@ -38,9 +40,6 @@ server.post('/', (req, res) => {
             console.log(err);
           }
           res.sendFile(csvFileName);
-          //res.sendFile(path.join(__dirname + '/client/index.html'));
-
-
 
         });
       })
@@ -48,15 +47,7 @@ server.post('/', (req, res) => {
      .catch((err) => {
        console.log(err);
      });
-
-
-  //fs.readFile()
-
-
 });
-
-
-//need a function that converts request body to a csv file
 
 server.listen(3000, () => {
    console.log('CSV report generator is listening on port 3000!');

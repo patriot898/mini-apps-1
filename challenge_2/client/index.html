@@ -2,14 +2,15 @@
 
 <html lang="en">
 <head>
+  <script src="../node_modules/jquery/dist/jquery.js"></script>
   <h1>CSV Report Generator</h1>
   </head>
 
 <body>
 
   <div id="input-block" style="height:300px; width:50%; border: thick solid black"> Input Your JSON Data Here
-    <form action ="http://localhost:3000/" method="post" enctype="multipart/form-data">
-      <span>Upload File Here </span><input type="file" name="jsonFile" style="width:70%; margin-top:10px"> <br>
+    <form id="fileSubmitter">
+      <span>Upload File Here </span><input id="jsonFile" type="file" name="jsonFile" style="width:70%; margin-top:10px"> <br>
       <input class="submit-button" type="submit">
     </form>
 
